@@ -1,7 +1,16 @@
 import React from 'react'
 import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity} from 'react-native'
 
-const OnlineShopping = () => {
+const OnlineShopping = ( {navigation}) => {
+
+    const handleOnPress = () => {
+        navigation.navigate('Add to Cart')
+    }
+
+    const handleSkip = () => {
+        navigation.navigate('Payment Successful')
+    }
+
     return (
         <SafeAreaView style = {styles.container}>
             <View style = {styles.textContainer}>
@@ -21,7 +30,7 @@ const OnlineShopping = () => {
             </View>
 
             <View style = {styles.buttonContainer}>
-                <TouchableOpacity style = {styles.button}>
+                <TouchableOpacity style = {styles.button} onPress = {handleOnPress}>
                     <Text style = {styles.text}>Next</Text>
                 </TouchableOpacity>
             </View>
@@ -32,12 +41,12 @@ const OnlineShopping = () => {
                 </TouchableOpacity>
                
                 <View style = {styles.innerNavigation}>
-                    <View style = {styles.navigationCircle}></View>
-                    <View style = {styles.navigationMiddle}></View>
+                    <View style = {styles.navigationThick}></View>
+                    <View style = {styles.navigationCircle}></View>  
                     <View style = {styles.navigationCircle}></View>
                 </View>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress = {handleSkip}>
                     <Text style = {styles.navigationText}>Skip</Text>
                 </TouchableOpacity>
             </View>
@@ -54,7 +63,7 @@ const styles = StyleSheet.create({
     container : {
         flex : 1,
         marginHorizontal : 30,
-        marginTop : 100
+        marginTop : 24
     },
 
     textContainer : {
@@ -75,7 +84,7 @@ const styles = StyleSheet.create({
     },
 
     imageContainer : {
-        flex : 0.3,
+        flex : 0.4,
         alignItems : 'center',
         justifyContent : 'center' ,
         marginTop : 30
@@ -87,10 +96,10 @@ const styles = StyleSheet.create({
     },
 
     buttonContainer : {
-        flex : 0.3,
+        flex : 0.2,
         justifyContent : 'center',
         alignItems : 'center',
-        marginTop : 20
+        marginTop : 30
     },
 
     button : {
@@ -134,7 +143,7 @@ const styles = StyleSheet.create({
         alignItems : 'baseline'
     },
 
-    navigationMiddle : {
+    navigationThick : {
         height : 8,
         width : 15,
         backgroundColor : '#9B95F7',
